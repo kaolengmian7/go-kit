@@ -1,4 +1,4 @@
-package csv_util
+package csvutil
 
 import (
 	"fmt"
@@ -105,6 +105,7 @@ func TestExport(t *testing.T) {
 	expectCsv := New()
 	err = expectCsv.Read(fp)
 	expect := [][]string{{"\ufeff1", "2", "3", "test"}, {"4", "5", "6", ""}, {"7", "8", "9", ""}} // 因为写入了 UTF-8 BOM 所以要加上 \ufeff
+	log.Printf("expectCSVData:%+v", expectCsv.data)
 	assert.ElementsMatch(t, expect, expectCsv.data)
 	// 删除测试文件
 	err = os.Remove(fp)
