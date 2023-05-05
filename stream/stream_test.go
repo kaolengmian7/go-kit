@@ -13,7 +13,7 @@ type Member struct {
 }
 
 // 这是使用 Stream 包的一个 Demo
-// 下面的例子中，我们将对 GroupId < 3 的星球的所有成员赠送 1 块钱。
+// 假设 Group 是豆瓣小组，Member 是小组成员，我们将对 GroupId < 3 的星球的所有成员赠送 1 块钱。
 func TestName(t *testing.T) {
 	res, err := From(GetMembers).Filter(MemberWalletFilter).Map(WalletUpdate, WithWorkerNum(10)).Done(Report)
 	if err != nil {
